@@ -9,6 +9,7 @@ require('./config/connection')
  pfSevrer.use(cors())
  pfSevrer.use(express.json())
  pfSevrer.use(router)
+ pfSevrer.use('/upload',express.static('./upload'))
 
  const PORT = 3000 || process.env.PORT  //IF 3000 NOT AVAILABLE TAKE IF ENV FILE HAS PORT 
 
