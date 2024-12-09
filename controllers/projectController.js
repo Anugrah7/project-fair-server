@@ -57,8 +57,13 @@ exports.getUserProjectscontroller = async (req,res)=>{
 
 exports.getAllProjectscontroller = async (req,res)=>{
     console.log("Inside getAllProjectsController");
+    const searchKey = req.query.search
     try{
-        const allProjects = await projects.find()
+        const allProjects = await projects.find({
+            languages:{
+                $regex:searchKey,$options:"i"
+            }
+        })
         res.status(200).json(allProjects)
 
     }catch(err){
